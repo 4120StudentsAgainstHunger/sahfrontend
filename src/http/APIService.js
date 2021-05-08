@@ -9,41 +9,27 @@ export class APIService {
 
    getBlogPage(param_pk) {
      const url = `${API_URL}/sahbackend/blogpages/${param_pk}`;
-     let jwtToken = localStorage.getItem('token');
-     console.log(":::jwtToken:::::"+jwtToken);
-     const headers = {Authorization: `jwt ${jwtToken}`};
-     return axios.get(url, {headers: {Authorization: `jwt ${jwtToken}`}});
+     return axios.get(url, {headers: headers});
   }
 
    getBlogPageList() {
     const url = `${API_URL}/sahbackend/blogpages/`;
-    let jwtToken = localStorage.getItem('token');
-    console.log(":::jwtToken:::::"+jwtToken);
-    const headers = {Authorization: `jwt ${jwtToken}`};
     return axios.get(url, {headers: headers});
 
   }
 
   addNewFoodRequest(foodrequest){
   const url = `${API_URL}/sahbackend/foodrequests/`;
-  let jwtToken = localStorage.getItem('token');
-  const headers = {Authorization: `jwt ${jwtToken}`};
   return axios.post(url, foodrequest, {headers: headers});
  }
 
   getEvent(param_pk) {
     const url = `${API_URL}/sahbackend/events/${param_pk}`;
-    let jwtToken = localStorage.getItem('token');
-    console.log(":::jwtToken:::::"+jwtToken);
-    const headers = {Authorization: `jwt ${jwtToken}`};
-    return axios.get(url, {headers: {Authorization: `jwt ${jwtToken}`}});
+    return axios.get(url, {headers: headers});
   }
 
   getEventList() {
       const url = `${API_URL}/sahbackend/events/`;
-      let jwtToken = localStorage.getItem('token');
-      console.log(":::jwtToken:::::" + jwtToken);
-      const headers = {Authorization: `jwt ${jwtToken}`};
       return axios.get(url, {headers: headers});
 
   }
