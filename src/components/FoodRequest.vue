@@ -47,13 +47,13 @@
 
                     <v-text-field
                     v-model="foodrequest.request_date"
-                    label="City"
+                    label="Date"
                     required
                     type="date"
                     />
 
                 </v-container>
-                <v-btn v-if="!isUpdate" class="blue white--text" @click="createfoodrequest">Save</v-btn>
+                <v-btn v-if="!isUpdate" class="blue white--text" @click="createFoodRequest">Save</v-btn>
                 <v-btn class="white black--text" @click="cancelOperation">Cancel</v-btn>
 
                 </v-form>
@@ -97,7 +97,7 @@
         })
       },
       cancelOperation(){
-         router.push("/food-request");
+         router.push("/");
       },
     },
   }

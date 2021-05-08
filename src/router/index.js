@@ -1,7 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Home from '@/components/Home'
-import Auth from '@/components/Auth'
 import BlogPageList from '@/components/BlogPageList'
 import FoodRequest from '@/components/FoodRequest'
 import EventList from '@/components/Event'
@@ -23,17 +22,7 @@ export default new Router({
       component: BlogPageList
     },
     {
-      path: '/blog-page-listing/:msg',
-      name: 'BlogUpdatedList',
-      component: BlogPageList
-    },
-    {
       path: '/event-listing',
-      name: 'EventList',
-      component: EventList
-    },
-    {
-      path: '/event-listing/:msg',
       name: 'EventList',
       component: EventList
     },
@@ -44,13 +33,9 @@ export default new Router({
     },
     {
       path: '/food-request/:pk',
-      name: 'FoodRequestUpdate',
+      name: 'FoodRequestCreate',
       component: FoodRequest
     },
-    {
-      path: '/auth',
-      name: 'Auth',
-      component: Auth
-    }
+
   ]
 })

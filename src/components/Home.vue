@@ -28,7 +28,9 @@
               <v-row>
                 <v-col>
                   <v-card>
-                    
+                    <v-img
+                      :src="require('@/assets/images/nonstock.jpg')" height="300px">
+                    </v-img>
                     <v-card-text>
                       <div class="blue--text text-h6">
                         View our events!
@@ -42,7 +44,9 @@
                 
                 <v-col>
                   <v-card>
-                    
+                    <v-img
+                      :src="require('@/assets/images/nonstock.jpg')" height="300px">
+                    </v-img>
                     <v-card-text>
                       <div class="blue--text text-h6">
                         Make a request!
@@ -56,7 +60,9 @@
 
                 <v-col>
                   <v-card>
-                     
+                     <v-img
+                      :src="require('@/assets/images/nonstock.jpg')" height="300px">
+                    </v-img>
                     <v-card-text>
                       <div class="blue--text text-h6">
                         Visit our blogs!
@@ -69,8 +75,17 @@
                 </v-col>
               </v-row>
               <v-row>
+                <footer>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
                   Here is our contact information:
-                  Blah / Blah / Blah
+                  (Phone Number) / (Email of Main Contact) / (Facebook Account)
+                </footer>
               </v-row>
             </v-container>
           </v-card>
@@ -85,6 +100,12 @@
 
   export default {
     name: 'Home',
+    data: () => ({
+      validUserName: "Guest"
+    }),
+    mounted() {
+      this.getUser();
+    },
     methods: {
       viewEvent() {
         router.push('/event-listing');
@@ -95,6 +116,12 @@
       viewFoodRequests() {
         router.push('/food-request');
       },
+      getUser() {
+        if (localStorage.getItem("isAuthenticates")
+          && JSON.parse(localStorage.getItem("isAuthenticates")) === true) {
+          this.validUserName = JSON.parse(localStorage.getItem("log_user"));
+        }
+      }
     }
   }
 </script>

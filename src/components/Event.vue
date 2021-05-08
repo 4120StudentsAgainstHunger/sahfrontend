@@ -60,7 +60,7 @@
         {text: 'Location', sortable: true, align: 'left',},
         {text: 'Event Name', sortable: false, align: 'left',},
         {text: 'Start Time', sortable: false, align: 'left',},
-        {text: 'Event Time', sortable: false, align: 'left',},
+        {text: 'End Time', sortable: false, align: 'left',},
         {text: 'Date', sortable: false, align: 'left',},
       ],
 
@@ -83,16 +83,9 @@
         }
       },
       getEvent() {
-        apiService.getEvent().then(response => {
+        apiService.getEventList().then(response => {
           this.events = response.data.data;
           this.eventSize = this.events.length;
-        }).catch(error => {
-          if (error.response.status === 401) {
-            localStorage.removeItem('isAuthenticates');
-            localStorage.removeItem('log_user');
-            localStorage.removeItem('token');
-            router.push("/auth");
-          }
         });
       },
     }

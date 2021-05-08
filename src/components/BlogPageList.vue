@@ -50,6 +50,7 @@
     name: "BlogPageList",
     data: () => ({
       blogpages: [],
+      validUserName: "Guest",
       blogpageSize: 0,
       showMsg: '',
       isMobile: false,
@@ -77,11 +78,22 @@
         }
       },
       getBlogPage() {
-        apiService.getBlogList().then(response => {
+        apiService.getBlogPageList().then(response => {
           this.blogpages = response.data.data;
           this.blogpageSize = this.blogpages.length;
+          if (localStorage.getItem("isAuthenticates")
+            && JSON.parse(localStorage.getItem("isAuthenticates")) === true) {
+            this.validUserName = JSON.parse(localStorage.getItem("log_user"));
+            }
+          }).catch(error => {
+          if (error.response.status === 401) {
+            localStorage.removeItem('isAuthenticates');
+            localStorage.removeItem('log_user');
+            localStorage.removeItem('token');
+            router.push("/auth");
+          }
         });
-      },
+      }
     }
   };
 </script>
