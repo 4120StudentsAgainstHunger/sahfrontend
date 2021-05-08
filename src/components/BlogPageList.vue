@@ -24,7 +24,7 @@
                       <tr>
                         <td align="left">{{ props.item.volunteer }}</td>
                         <td align="left">{{ props.item.title }}</td>
-                        <td align="center"><v-icon @click="viewBlogPost(props.item)">mdi-eye</v-icon></td>
+                        <td align="center"><v-icon @click="viewBlogPostShow(props.item)">mdi-eye</v-icon></td>
                       </tr>  
                     </template>
               </v-data-table>
@@ -57,6 +57,7 @@
       headers: [
         {text: 'Volunteer', sortable: true, align: 'left',},
         {text: 'Title', sortable: false, align: 'left',},
+        {text: 'Check Blog', sortable: false, align: 'left',},
       ],
 
     }),
@@ -93,6 +94,14 @@
             router.push("/auth");
           }
         });
+      },
+      showBlogPage() {
+        if (localStorage.getItem("isAuthenticates")
+          && JSON.parse(localStorage.getItem("isAuthenticates")) === true) {
+          router.push('/show-blog-page');
+        } else {
+          router.push("/auth");
+        }
       }
     }
   };
